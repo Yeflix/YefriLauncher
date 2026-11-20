@@ -1,0 +1,4 @@
+/* styles.qss
+   Placeholder de stylesheet Qt. Aqui iran los estilos base
+   (tipografia, colores, bordes) que no dependen de la animacion
+   en tiempo real, la cual se maneja por codigo en launcher_card.py. */

@@ -1,0 +1,43 @@
+# Pisos de version: se fijaron tras revisar los avisos de seguridad
+# publicados de cada dependencia. El criterio es un piso >= a la version
+# que corrige lo conocido, sin techo, para que un `pip install -r` nuevo
+# no arrastre una version vulnerable. Al subir un piso, anotar aca el
+# motivo.
+
+# UI / animaciones
+# Sin CVEs conocidos (verificado contra la base de Snyk). El piso se
+# sube igual a 6.8 por estabilidad: 6.7 es de 2024 y las notas de
+# release posteriores incluyen arreglos de crashes relevantes para lo
+# que usa este proyecto.
+PySide6>=6.8
+
+# Integración nativa Windows (registro, .lnk, extracción de iconos)
+# CVE-2021-32559 (integer overflow al construir ACLs) afecta < 301, y
+# el piso anterior (306) ya estaba por encima. Se sube a 311 igual: es
+# la serie actual y trae soporte para versiones de Python nuevas, que
+# importa porque este proyecto se empaqueta con PyInstaller contra el
+# Python que tenga instalado el usuario.
+pywin32>=311
+
+# Parseo de archivos VDF de Steam (libraryfolders.vdf, appmanifest_*.acf)
+# Sin CVEs conocidos. Modulo chico y de proposito unico; 3.4 sigue
+# siendo la version vigente de ValvePython/vdf.
+vdf>=3.4
+
+# Procesamiento de imágenes/iconos extraídos
+# IMPORTANTE: el piso anterior (>=10.0) permitia instalar versiones con
+# varios CVEs de corrupcion de memoria y DoS, algunos con RCE potencial
+# (CVE-2026-25990 y CVE-2026-42311, OOB write via PSD; CVE-2026-42309,
+# heap overflow en primitivas de dibujo; CVE-2026-59203, loop infinito
+# parseando EPS; CVE-2026-59197/59199, OOB write en coordenadas cerca
+# del limite de int32 en paste/crop/alpha_composite; CVE-2026-55798,
+# inyeccion de comandos en ImageShow.WindowsViewer.get_command).
+# 12.3.0 es la primera version que corrige todo lo anterior.
+#
+# Nota de exposicion real: Pillow solo procesa iconos (los que se
+# extraen de programas instalados y las imagenes-icono que Steam y
+# Microsoft Store ya tienen en disco). Las imagenes de fondo que elige
+# el usuario las abre Qt, no Pillow. No se procesan imagenes que vengan
+# de internet, asi que el riesgo practico era bajo. Aun asi no hay
+# motivo para quedarse en una version vulnerable.
+Pillow>=12.3.0

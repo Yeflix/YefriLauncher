@@ -1,0 +1,66 @@
+{
+  "_comentario": "Plantilla de referencia -- NO la lee el programa. El archivo real es config/launchers.json dentro de la carpeta de datos del usuario y se genera solo. Cada grupo de 'groups' es una CATEGORIA de la lista; 'Group1' es la categoria por defecto (recibe las apps recien detectadas) y siempre existe. Los campos 'hidden', 'favorite', 'hover_background' y 'category_locked' solo aparecen si el usuario los uso. 'launch' solo existe en accesos directos detectados: es el .lnk que se ejecuta ('target' es el .exe al que apunta, y es lo que identifica a la app). 'remembered' guarda la personalizacion de apps detectadas que dejaron de aparecer, para devolversela si vuelven; solo existe si hay algo que recordar. 'dismissed_auto_rules' lista las reglas de categorizacion automatica cuya categoria el usuario elimino.",
+  "groups": [
+    {
+      "group_id": "Group1",
+      "title": "Programas",
+      "launchers": [
+        {
+          "id": "shortcut_<hash de la ruta normalizada del .exe (+ argumentos, si tiene)>",
+          "name": "Visual Studio Code",
+          "type": "shortcut",
+          "target": "C:\\Program Files\\Microsoft VS Code\\Code.exe",
+          "launch": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\Visual Studio Code.lnk",
+          "icon": "<carpeta de datos>\\cache\\extracted_icons\\<hash>_v2.png",
+          "source": "auto",
+          "close_after_launch": true,
+          "favorite": true
+        },
+        {
+          "id": "manual_<hash>",
+          "name": "Mi herramienta",
+          "type": "shortcut",
+          "target": "C:\\Tools\\herramienta.exe",
+          "icon": "auto",
+          "source": "manual",
+          "close_after_launch": true,
+          "hover_background": "C:\\Imagenes\\fondo.png"
+        }
+      ]
+    },
+    {
+      "group_id": "cat_1a2b3c4d",
+      "title": "Juegos",
+      "launchers": [
+        {
+          "id": "steam_730",
+          "name": "Counter-Strike 2",
+          "type": "steam",
+          "target": "steam://rungameid/730",
+          "icon": "auto",
+          "source": "auto",
+          "close_after_launch": true,
+          "category_locked": true
+        },
+        {
+          "id": "uwp_<hash>",
+          "name": "Minecraft Launcher",
+          "type": "uwp",
+          "target": "shell:AppsFolder\\Microsoft.4297127D64EC6_8wekyb3d8bbwe!Minecraft",
+          "icon": "auto",
+          "source": "auto",
+          "close_after_launch": true,
+          "hidden": true
+        }
+      ]
+    }
+  ],
+  "dismissed_auto_rules": [],
+  "remembered": {
+    "steam_440": {
+      "favorite": true,
+      "hover_background": "C:\\Imagenes\\tf2.jpg",
+      "group_id": "cat_1a2b3c4d"
+    }
+  }
+}

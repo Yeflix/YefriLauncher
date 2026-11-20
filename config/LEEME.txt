@@ -1,0 +1,36 @@
+CARPETA config/ DEL PROYECTO  --  NO GUARDA TUS DATOS
+=====================================================
+
+Esta carpeta solo contiene una plantilla de referencia
+(launchers.schema.json). El programa NO guarda aca lo que configuras.
+
+DONDE SE GUARDAN TUS DATOS
+--------------------------
+    %APPDATA%\SpectrumLauncher\
+
+Para abrirla: clic en el icono de la bandeja -> "Abrir carpeta de datos"
+(o Win+R, pegar  %APPDATA%\SpectrumLauncher  y Enter).
+
+    config\launchers.json   lista de apps (detectadas y manuales),
+                            categorias, favoritas, ocultas y la RUTA de
+                            cada imagen de fondo
+    config\settings.json    ajustes (ventana, animacion, atajo, etc.)
+    config\debug.log        registro de diagnostico
+    cache\extracted_icons\  iconos de las apps ya extraidos (PNG)
+
+Por que fuera del proyecto: si los datos vivieran aca, cada vez que
+reemplazaras la carpeta del proyecto por una version nueva se pisarian
+tus imagenes de fondo, favoritas y categorias.
+
+NOTAS
+-----
+- Las imagenes de fondo NO se copian: se guarda su ruta. Si moves o
+  borras la imagen original, el fondo deja de verse.
+- La lista de apps se vuelve a generar sola en cada arranque (Steam,
+  Menu Inicio, Escritorio, Microsoft Store): borrar launchers.json no
+  la elimina para siempre, solo reinicia categorias, favoritas y fondos.
+- Para reiniciar todo de cero: cerrar el programa desde la bandeja y
+  borrar la carpeta %APPDATA%\SpectrumLauncher.
+- Si en esta carpeta (config\) hay un launchers.json o settings.json de
+  una version vieja, se COPIAN a %APPDATA% la primera vez, solo si alli
+  todavia no existen.
